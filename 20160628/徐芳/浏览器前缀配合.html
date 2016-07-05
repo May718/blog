@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0;}
+div{width:200px;height:200px;background:red;}
+</style>
+<script>
+function setC3Style(obj,sName,sValue){
+	var str=sName.charAt(0).toUpperCase()+sName.substring(1);
+	obj.style['Webkit'+str]=sValue;
+	obj.style['Moz'+str]=sValue;
+	obj.style['ms'+str]=sValue;
+	obj.style['O'+str]=sValue;
+	obj.style[str]=sValue;
+}
+window.onload=function(){
+	var oDiv=document.querySelector('div');
+	oDiv.onclick=function(){
+		setC3Style(oDiv,'transition','1s all ease');
+		oDiv.style.width='500px';
+	}
+}
+</script>
+</head>
+
+<body>
+<div></div>
+</body>
+</html>

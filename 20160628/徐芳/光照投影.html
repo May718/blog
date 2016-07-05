@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0;}
+.div1{width:80px;height:80px; position:absolute;left:50px;top:50px;border:1px solid #F90;background:rgba(100%,60%,0%,.7);border-radius:50%; box-shadow:0 0 40px #F90,0 0 60px #F90,0 0 80px #F90;}
+.div2{width:200px;height:100px; position:absolute;left:500px;top:300px; text-align:center;font:bold 36px/100px "微软雅黑";color:#03F; text-shadow:0 0px 0px #000;}
+
+#sun{width:80px;height:80px; position:absolute;left:50px;top:50px;border:1px solid #F90;background:rgba(100%,60%,0%,.7);border-radius:50%; box-shadow:0 0 40px #F90,0 0 60px #F90,0 0 80px #F90;}
+p{height:50px; text-align:center; line-height:50px; font-size:50px; font-family:微软雅黑; font-weight: bold; margin-top:200px; color:blue; text-shadow:0px 0px 0px #000;}
+</style>
+<script>
+window.onload=function(){
+	/*var oDiv=document.querySelector('.div1');
+	var oDiv2=document.querySelector('.div2');
+	var centerX = oDiv2.offsetWidth/2+oDiv2.offsetLeft;
+	var centerY = oDiv2.offsetHeight/2+oDiv2.offsetTop;
+	oDiv.onmousedown=function(ev){
+		var oEvt=ev||event;
+		var disX=oEvt.clientX-oDiv.offsetLeft;
+		var disY=oEvt.clientY-oDiv.offsetTop;
+		oDiv2.style.textShadow = '0 10px 5px #000';
+		document.onmousemove=function(ev){
+			var oEvt=ev||event;
+			var l=oEvt.clientX-disX;
+			var t=oEvt.clientY-disY;
+			if(l<0)l=0;
+			if(t<0)t=0;
+			if(l>document.documentElement.clientWidth-oDiv.offsetWidth)
+				l=document.documentElement.clientWidth-oDiv.offsetWidth;
+			if(t>document.documentElement.clientHeight-oDiv.offsetHeight)
+				t=document.documentElement.clientHeight-oDiv.offsetHeight;
+			var a = centerX-(l+oDiv.offsetWidth/2);
+			var b = centerY-(t+oDiv.offsetWidth/2);
+			var c=Math.sqrt(a*a+b*b);
+
+			oDiv.style.left=l+'px';
+			oDiv.style.top=t+'px';
+			oDiv2.style.textShadow = a*0.5+'px '+b*0.5+'px 5px #000';
+		}
+		document.onmouseup=function(){
+			document.onmousemove=document.onmouseup=null;
+			oDiv.releaseCapture && oDiv.releaseCapture();
+		}
+		oDiv.setCapture && oDiv.setCapture();
+		return false;
+	}*/
+	var oSun=document.querySelector('#sun');
+	var oP=document.querySelector('p');
+	document.onmousemove=function(ev){
+		oSun.style.left=ev.clientX-oSun.offsetWidth/2+'px';
+		oSun.style.top=ev.clientY-oSun.offsetHeight/2+'px';
+		var x = (oP.offsetLeft+oP.offsetWidth/2)-ev.clientX;
+		var y = (oP.offsetTop+oP.offsetHeight/2)-ev.clientY;
+		var dis=Math.sqrt(x*x+y*y);
+		oP.style.textShadow=x/3+'px '+y/3+'px '+dis/20+'px #000';
+	}
+}
+</script>
+</head>
+
+<body>
+<!--<div class="div1"></div>
+<div class="div2">智能社</div>
+-->
+<div id="sun"></div>
+<p>智能社</p>
+</body>
+</html>

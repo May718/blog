@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0; padding:0; list-style:none;}
+ul{width:200px;}
+ul li{height:30px; line-height:30px; padding-left:20px; border-bottom:1px dashed #ccc;}
+li.active{ background:url(play.gif) no-repeat right;}
+</style>
+<script>
+window.onload=function(){
+	var arr = ['千千阙歌','时间都去哪儿了','小苹果','夜的钢琴曲','雨的印记'];
+	var oA = document.querySelector('#audio');
+	var aLi = document.querySelectorAll('ul li');
+	var iNow = 0;
+	for(var i=0;i<aLi.length;i++){
+		(function(index){
+			aLi[i].ondblclick=function(){
+				iNow = index;
+				tab();
+			};
+		})(i);
+	}
+	function tab(){
+		for(var i=0;i<aLi.length;i++){
+			aLi[i].className='';
+		}
+		aLi[iNow].className='active';
+		oA.src = 'mp3/'+arr[iNow]+'.mp3';
+		oA.play();
+	}
+};
+</script>
+</head>
+
+<body>
+<audio id="audio"></audio>
+<ul>
+	<li>千千阙歌</li>
+	<li>时间都去哪儿了</li>
+	<li>小苹果</li>
+	<li>夜的钢琴曲</li>
+	<li>雨的印记</li>
+</ul>
+</body>
+</html>

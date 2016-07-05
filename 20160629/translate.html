@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0;}
+#box{width:150px;height:200px;background:#ccc;position:relative;margin:100px auto;-webkit-transform:perspective(800px) rotateY(-50deg) rotateX(50deg);-webkit-transform-style:preserve-3d;}
+#box div{width:100%;height:100%;background:red; position:absolute;left:0;top:0;-webkit-transition:1s all ease;}
+#box:hover div{-webkit-transform:translateZ(100px)}
+</style>
+</head>
+
+<body>
+<div id="box">
+	<div></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0;text-decoration:none;}
+body{overflow:hidden;}
+#login_box{width:300px;height:100px;position:absolute;left:50%;top:50%;margin-left:-150px;margin-top:-50px;background:#ccc;padding-top:30px;-webkit-transform:scale(5,5); opacity:0; display:none;}
+</style>
+<script>
+window.onload=function(){
+	var oBtn=document.getElementById('login');
+	var oBox=document.getElementById('login_box');
+	var oClose=document.getElementById('close');
+	oBtn.onclick=function(){
+		oBox.style.display='block';
+		oBox.style.WebkitTransition='.3s all ease';
+		setTimeout(function(){
+			oBox.style.opacity=1;
+			oBox.style.WebkitTransform='scale(1,1)';
+		},0);
+	}
+	oClose.onclick=function(){
+		oBox.style.opacity=0;
+		oBox.style.WebkitTransform='scale(5,5)';
+		function tranEnd(){
+			oBox.style.display='none';
+			oBox.removeEventListener('transitionend',tranEnd,false);
+		}
+		oBox.addEventListener('transitionend',tranEnd,false);
+	}
+}
+</script>
+</head>
+
+<body>
+<input type="button" id="login" value="登录"/>
+<div id="login_box">
+	<label for="username">用户名:</label><input type="text" name="username"/><br/><br/>
+    <label for="password">密&nbsp;码:</label><input type="password" name="password"/><br/>
+    <input type="button" value="登录"/>
+    <input type="button" value="注册"/>
+    <a id="close">x</a>
+</div>
+</body>
+</html>

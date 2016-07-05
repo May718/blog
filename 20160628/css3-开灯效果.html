@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com" />
+<meta name="copyright" content="智能社 - zhinengshe.com" />
+<meta name="description" content="智能社是一家专注于web前端开发技术的公司，目前主要提供JavaScript培训和HTML5培训两项服务，同时还推出了大量javascript基础知识教程，智能课堂为你带来全新的学习方法和快乐的学习体验。" />
+<title>智能社— http://www.zhinengshe.com</title>
+<style>
+*{margin:0; padding:0;}
+body{
+	background:#000;
+	-webkit-transition:1s all ease;
+
+}
+#box{
+	position: absolute;
+	left: 825px;
+	top: 300px;
+	width:200px; 
+	height:200px;
+	background:#000;  
+	border-radius:50%; 
+	-webkit-transition:0.8s all ease;
+	z-index: 999;
+}
+#offon{
+	cursor: pointer;
+	position: absolute;
+	top: 10px;
+	left: 100px;
+	width: 100px;
+	height: 50px;
+	background: green;
+	font: bold 25px/50px '微软雅黑';
+	color: #fff;
+	text-align: center;
+	border-radius: 10px;
+	box-shadow: 3px 5px 10px #fff,inset 0 0 3px #fff;
+	-webkit-transition:0.2s all ease;
+}
+#text{
+	position: absolute;
+	width: 200px;
+	left: 825px;
+	top: 350px;
+	text-align: center;
+	font: bold 50px '微软雅黑';
+	text-shadow: 0px 0px 10px 0px #000;
+	-webkit-transition:0.8s all ease;
+}
+</style>
+
+<script>
+window.onload=function(){
+	var oBody = document.getElementsByTagName('body')[0];
+	var oBox = document.getElementById('box');
+	var oPush = document.getElementById('offon');
+	var oText = document.getElementById('text');
+	var ready = true;
+	var centerX = oText.offsetWidth/2+oText.offsetLeft;
+	var centerY = oText.offsetHeight/2+oText.offsetTop;
+	oPush.onclick=function(){
+		if(ready){
+			oPush.style.boxShadow = '1px 1px 2px green,inset 0 0 0px #fff';
+			oBox.style.background = 'rgba(255,255,255,0.7)'; 
+			oBox.style.boxShadow = '0px 0px 200px 20px #fff';
+			
+			ready = false;
+			setTimeout(function(){
+				oBody.style.background = '#999';
+				oPush.style.boxShadow = '3px 5px 10px #fff,inset 0 0 3px #fff';
+			},100)
+		}else{
+			oPush.style.boxShadow = '1px 1px 2px green,inset 0 0 0px #fff';
+			oBox.style.background = '#000';
+			oBox.style.boxShadow = '0px 0px 200px 20px #000';
+
+			ready = true
+			setTimeout(function(){
+				oBody.style.background = '#000';
+				oPush.style.boxShadow = '3px 5px 10px #fff,inset 0 0 3px #fff';
+			},100)
+		}
+	}
+	oBox.onmousedown = function(ev){
+		var e = ev||event;
+		var disX = e.clientX-oBox.offsetLeft;
+		var disY = e.clientY-oBox.offsetTop;
+		document.onmousemove=function(ev){
+			var e = ev||event;
+			var l = e.clientX-disX;
+			var t = e.clientY-disY;
+			if(l<0)l=0;
+			if(t<0)t=0;
+			if(l>document.documentElement.clientWidth-oBox.offsetWidth)
+				l=document.documentElement.clientWidth-oBox.offsetWidth;
+			if(t>document.documentElement.clientHeight-oBox.offsetHeight)
+				t=document.documentElement.clientHeight-oBox.offsetHeight;
+
+			var a = centerX-(l+oBox.offsetWidth/2);
+			var b = centerY-(t+oBox.offsetWidth/2);
+			var c=Math.sqrt(a*a+b*b);
+
+			oBox.style.left = l+'px';
+			oBox.style.top = t+'px';
+
+			oText.style.textShadow = a*0.5+'px '+b*0.5+'px 10px #000';
+
+		}
+		document.onmouseup=function(){
+			document.onmousemove=document.onmouseup=null;
+			oBox.releaseCapture && oBox.releaseCapture();
+		}
+		oBox.setCapture && oBox.setCapture();
+		return false;
+	}
+}
+</script>
+</head>
+
+<body>
+<div id="box"></div>
+<div id="offon">PUSH</div>
+<div id="text">CURRY</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

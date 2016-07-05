@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0;list-style:none;}
+body{background:url(bg.jpg) no-repeat;height:650px;background-size:100% 100%;}
+ul{position:absolute;overflow:hidden;height:400px;top:300px;}
+li{width:200px;height:200px;float:left;margin-left:150px;-webkit-transform-style:preserve-3d;-webkit-transition:1s all ease;-webkit-transform:perspective(800px);}
+li div{width:200px;height:200px;}
+li div.front{background:url(img_01.jpg) no-repeat;background-size:100% 100%;-webkit-transform:translateZ(1px);}
+li div.back{background:url(cd.png) no-repeat;background-size:100% 100%;-webkit-transform:translateZ(-1px) scale(-1,1)}
+li:active div.front{-webkit-transform:perspective(800px) translate(0,80px) translateZ(2px);}
+li:active div.back{-webkit-transform:perspective(800px) translateZ(1px);}
+</style>
+</head>
+
+<body>
+<ul>
+	<li>
+    	<div class="front"></div>
+        <div class="back"></div>
+    </li>
+    <li>
+    	<div class="front"></div>
+        <div class="back"></div>
+    </li>
+    <li>
+    	<div class="front"></div>
+        <div class="back"></div>
+    </li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com" />
+<meta name="copyright" content="智能社 - zhinengshe.com" />
+<meta name="description" content="智能社是一家专注于web前端开发技术的公司，目前主要提供JavaScript培训和HTML5培训两项服务，同时还推出了大量javascript基础知识教程，智能课堂为你带来全新的学习方法和快乐的学习体验。" />
+<title>智能社— http://www.zhinengshe.com</title>
+<style>
+*{margin:0; padding:0;}
+.box{width:700px; height:400px; margin:100px auto; position:relative;}
+.box span{ position:absolute; top:0; left:0; -webkit-transform-style:preserve-3d; -webkit-transform:perspective(800px) rotateY(0deg);}
+span em{position:absolute; top:0; left:0; width:100%; height:100%;}
+span .front{ background:url(img/1.jpg) no-repeat; -webkit-transform:translateZ(1px);}
+span .back{ background:url(img/2.jpg) no-repeat; -webkit-transform:translateZ(-1px);}
+
+</style>
+<script>
+window.onload=function(){
+	var oBox = document.querySelector('.box');
+	var R = 4;
+	var C = 7;
+	for(var i=0;i<R;i++){
+		for(var j=0;j<C;j++){
+			var oS = document.createElement('span');
+			oS.style.width = oBox.offsetWidth/C+'px';
+			oS.style.height = oBox.offsetHeight/R+'px';
+			oS.innerHTML = '<em class="front"></em><em class="back"></em>';
+			oBox.appendChild(oS);
+			oS.style.left = j*oS.offsetWidth+'px';
+			oS.style.top = i*oS.offsetHeight+'px';
+			var oFront = oS.children[0];
+			var oBack = oS.children[1];
+			oFront.style.backgroundPosition = oBack.style.backgroundPosition = -j*oS.offsetWidth+'px '+-i*oS.offsetHeight+'px';
+		}
+	}
+};
+</script>
+</head>
+
+<body>
+<div class="box"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

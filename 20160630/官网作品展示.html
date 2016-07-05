@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0;list-style:none;}
+ul{width:302px;height:302px;position:relative;margin:100px auto;}
+li{width:300px;height:300px;position:absolute;background:#C9C;border:1px solid #000;text-align:center;font:24px/300px "微软雅黑";color:#fff;opacity:0;-webkit-transition:1s all ease;}
+.l2{opacity:0;z-index:3;-webkit-transform:pesrpective(800px) translate(-250px,0) rotateY(45deg);}
+.l1{opacity:1;z-index:4;-webkit-transform:perspective(800px) translate(-200px,0) rotateY(45deg);}
+.cur{opacity:1;z-index:5;}
+.r1{opacity:1;z-index:4;-webkit-transform:perspective(800px) translate(200px,0) rotateY(-45deg);}
+.r2{opacity:0;z-index:3;-webkit-transform:perspective(800px) translate(250px,0) rotateY(-45deg);}
+</style>
+<script>
+window.onload=function(){
+	var oPrev=document.querySelector('#prev');
+	var oNext=document.querySelector('#next');
+	var aLi=document.querySelectorAll('ul li');
+	var aClass=[];
+	var bOk=false;
+	for(var i=0;i<aLi.length;i++){
+		aClass[i]=aLi[i].className;
+	}
+	alert(aClass);
+	oPrev.onclick=function(){
+		if(bOk)return;
+		bOk=true;
+		aClass.push(aClass.shift());
+		tab();
+	}
+	oNext.onclick=function(){
+		if(bOk)return;
+		bOk=true;
+		aClass.unshift(aClass.pop());
+		tab();
+	}
+	function tab(){
+		var oCur=document.querySelector('.cur');
+		for(var i=0;i<aLi.length;i++){
+			aLi[i].className=aClass[i];
+		}
+		oCur.addEventListener('transitionend',tranEnd,false);
+		function tranEnd(){
+			oCur.removeEventListener('transitionend',tranEnd,false);
+			bOk=false;
+		}
+	}
+}
+</script>
+</head>
+
+<body>
+<a href="javascript:;" id="prev">←</a>
+<a href="javascript:;" id="next">→</a>
+<ul>
+	<li class="l2">1</li>
+    <li class="l1">2</li>
+    <li class="cur">3</li>
+    <li class="r1">4</li>
+    <li class="r2">5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+    <li>11</li>
+    <li>12</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0;}
+#box{height:650px;background:url(bg.jpg) no-repeat;position:relative;-webkit-transform-style:preserve-3d;-webkit-transform:perspective(800px) rotateY(0deg);-webkit-transition:1s all ease;}
+#box div{width:200px;height:200px;position:absolute;left:200px;top:300px;-webkit-transition:1s all ease;}
+.front{background:url(img_01.jpg) no-repeat;-webkit-transform:translateZ(1px);}
+.back{background:url(cd.png) no-repeat;-webkit-transform:scale(-1,1);-webkit-transform:translateZ(-1px)}
+#box:active .front{-webkit-transform:perspective(800px) translate(0,80px) translateZ(2px);}
+#box:active .back{-webkit-transform:perspective(800px) translateZ(1px)}
+</style>
+</head>
+
+<body>
+<div id="box">
+	<div class="front"></div>
+    <div class="back"></div>
+</div>
+</body>
+</html>

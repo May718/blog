@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com" />
+<meta name="copyright" content="智能社 - zhinengshe.com" />
+<meta name="description" content="智能社是一家专注于web前端开发技术的公司，目前主要提供JavaScript培训和HTML5培训两项服务，同时还推出了大量javascript基础知识教程，智能课堂为你带来全新的学习方法和快乐的学习体验。" />
+<title>智能社— http://www.zhinengshe.com</title>
+<style>
+*{margin:0; padding:0; list-style:none;}
+ul{width:200px;}
+ul li{height:30px; line-height:30px; padding-left:20px; border-bottom:1px dashed #ccc;}
+li.active{ background:url(play.gif) no-repeat right;}
+</style>
+<script>
+window.onload=function(){
+	var arr = ['千千阙歌','时间都去哪儿了','小苹果','夜的钢琴曲','雨的印记'];
+	var oA = document.querySelector('#audio');
+	var aLi = document.querySelectorAll('ul li');
+	var iNow = 0;
+	for(var i=0;i<aLi.length;i++){
+		(function(index){
+			aLi[i].onclick=function(){
+				iNow = index;
+				tab();
+			};
+		})(i);
+	}
+	function tab(){
+		for(var i=0;i<aLi.length;i++){
+			aLi[i].className='';
+		}
+		aLi[iNow].className='active';
+		oA.src = 'mp3/'+arr[iNow]+'.mp3';
+		oA.play();
+	}
+};
+</script>
+</head>
+
+<body>
+<audio id="audio" src="mp3/千千阙歌.mp3" autoplay></audio>
+<ul>
+	<li class="active">千千阙歌</li>
+	<li>时间都去哪儿了</li>
+	<li>小苹果</li>
+	<li>夜的钢琴曲</li>
+	<li>雨的印记</li>
+</ul>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

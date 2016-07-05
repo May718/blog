@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0;}
+#sun{width:100px;height:100px;border:1px solid #F30;background:#F60;border-radius:50%;box-shadow:0 0 100px #F90; position:absolute; left:0;top:0;}
+p{height:50px;text-align:center;font:bold 50px/50px "微软雅黑"; margin-top:200px; color:#03C;text-shadow:0 0 0 #000;}
+</style>
+<script>
+window.onload=function(){
+	var oSun = document.querySelector('#sun');
+	var oP = document.querySelector('p');
+	document.onmousemove=function(ev){
+		oSun.style.left = ev.pageX-oSun.offsetWidth/2+'px';
+		oSun.style.top = ev.pageY-oSun.offsetHeight/2+'px';
+		
+		var x = (oP.offsetLeft+oP.offsetWidth/2)-ev.pageX;
+		var y = (oP.offsetTop+oP.offsetHeight/2)-ev.pageY;
+		
+		var dis = Math.sqrt(x*x+y*y);
+		
+		oP.style.textShadow = x/3+'px '+y/3+'px '+dis/20+'px #000';
+	};
+};
+</script>
+</head>
+
+<body>
+<div id="sun"></div>
+<p>智能社</p>
+</body>
+</html>

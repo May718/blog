@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com" />
+<meta name="copyright" content="智能社 - zhinengshe.com" />
+<meta name="description" content="智能社是一家专注于web前端开发技术的公司，目前主要提供JavaScript培训和HTML5培训两项服务，同时还推出了大量javascript基础知识教程，智能课堂为你带来全新的学习方法和快乐的学习体验。" />
+<title>智能社— http://www.zhinengshe.com</title>
+<style>
+*{margin:0; padding:0;}
+body{overflow:hidden; }
+#btn1{position:absolute; top:200px;left:300px;}
+.login_box{width:400px; height:300px;position:absolute; left:50%; top:50%; margin-left:-250px; margin-top:-200px; background:#ccc; padding:50px; -webkit-transform:scale(4,3); opacity:0; display:none;}
+</style>
+<script>
+window.onload=function(){
+	var oBtn1 = document.getElementById('btn1');
+	var oClose = document.getElementById('close');
+	var oBox = document.querySelector('.login_box');
+	oBtn1.onclick=function(){
+		oBox.style.display='block';
+		oBox.style.WebkitTransition = '.3s all ease';
+		setTimeout(function(){
+			oBox.style.opacity = 1;
+			oBox.style.WebkitTransform = 'scale(1,1)';
+		},0);
+	};
+	oClose.onclick=function(){
+		oBox.style.opacity = 0;
+		oBox.style.WebkitTransform = 'scale(4,3)';
+		oBox.addEventListener('transitionend',function(){
+			oBox.style.display='none';
+		},false);
+	};
+};
+</script>
+</head>
+
+<body>
+	<input type="button" value="登录" id="btn1" />
+	<div class="login_box">
+		<label for="username">用户名:</label><input type="text" id="username" /><br />
+		<label for="password">用户名:</label><input type="password" id="password" /><br />
+		<input type="button" value="登录" />
+		<a href="javascript:;" id="close">X</a>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

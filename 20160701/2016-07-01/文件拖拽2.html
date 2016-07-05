@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com" />
+<meta name="copyright" content="智能社 - zhinengshe.com" />
+<meta name="description" content="智能社是一家专注于web前端开发技术的公司，目前主要提供JavaScript培训和HTML5培训两项服务，同时还推出了大量javascript基础知识教程，智能课堂为你带来全新的学习方法和快乐的学习体验。" />
+<title>智能社— http://www.zhinengshe.com</title>
+<style>
+*{margin:0; padding:0;}
+div{width:400px; height:300px; background:#ccc; border:1px solid #000; position:absolute; top:50%; left:50%; margin-top:-150px; margin-left:-200px;text-align:center; line-height:300px; font-size:30px; display:none;}
+</style>
+<script>
+window.onload=function(){
+	var timer = null;
+	var oDiv = document.querySelector('div');
+
+	
+	document.ondragover = function(){
+		oDiv.style.display='block';
+		clearTimeout(oDiv.timer);
+		oDiv.timer = setTimeout(function(){
+			oDiv.style.display='none';
+		},300);
+	};
+	
+	oDiv.ondragenter = function(){
+		oDiv.innerHTML = '请释放鼠标';
+	};
+	oDiv.ondragleave = function(){
+		oDiv.innerHTML = '请将文件拖放到此处';
+	};
+	oDiv.ondragover = function(){
+		return false;
+	};
+	oDiv.ondrop = function(){
+		alert('放这');
+		return false;
+	};
+	
+};
+</script>
+</head>
+
+<body>
+<div>请将文件拖放到此处</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
